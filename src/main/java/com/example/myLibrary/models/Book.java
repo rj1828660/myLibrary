@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 @Document(collection = "books")
+
 public class Book {
     @Id
     @NotNull(message = "id is required")
@@ -16,10 +17,18 @@ public class Book {
     @Positive(message = "Copies available must be positive")
     @NotNull(message = "Copies available is required")
 
+
     private int copiesAvailable;
     private String authorId;
     private String genre;
 
+   public  Book(String id,String title,int copiesAvailable,String authorId,String genre){
+        this.id=id;
+        this.title=title;
+        this.copiesAvailable=copiesAvailable;
+        this.authorId=authorId;
+        this.genre=genre;
+    }
     public String getTitle() {
         return title;
     }

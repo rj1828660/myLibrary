@@ -8,6 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Document(collection = "authors")
+
 public class Author {
     @Id
     @NotNull(message = "id is required")
@@ -16,6 +17,11 @@ public class Author {
     private String name;
     private Address address;
 
+    public Author(String id,String name,Address address){
+        this.id=id;
+        this.name=name;
+        this.address=address;
+    }
     public String getId() {
         return id;
     }
