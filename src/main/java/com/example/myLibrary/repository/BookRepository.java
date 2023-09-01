@@ -12,6 +12,6 @@ public interface BookRepository extends MongoRepository<Book, String> {
     @Query(value = "{'genre': ?0, 'copiesAvailable': {$gt: ?1}}")
     List<Book> findBooksByGenreAndCopiesAvailable(String genre, int copiesAvailable);
 
-    @Query(value = "{'id': ?0}")
-    Book findBookById(String id);
+//    @Query(value = "{'id': ?0}")
+    List<Book> findBookByAuthorId(String authorId);
 }

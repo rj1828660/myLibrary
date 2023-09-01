@@ -72,4 +72,26 @@ class MyLibraryApplicationTests {
 
 		assertEquals(author, authorService.createAuthor(author));
 	}
+
+
+	@Test
+	public void getBooksByAuthorTests(){
+		String name= "Rajkumar  jha" ;
+		Author author =  new Author("103","Rajkumar  jha",null) ;
+		when(authorRepository.findByName(name)).thenReturn(author) ;
+		when(bookRepository.findBookByAuthorId("103")).thenReturn(Stream.of(new Book(  "13",
+				"first step toward general quantum computer",
+				21,
+				"103",
+				"quantum physics")).collect(Collectors.toList())) ;
+		assertEquals(author.getId(),bookService.getBooksByAuthorId("103").get(0).getAuthorId());
+	}
+
+	@Test
+	public void getAuthorsByNameRegexTest() {
+		String nameRegex = "Raj";
+		when(authorRepository.findByAuthorNameRegex(nameRegex)).thenReturn(Stream.of(new Author("103","Rajkumar  jha",null)).collect(Collectors.toList()));
+		assertEquals(1,authorService.getAuthorsByNameRegex(nameRegex).size() );
+	}
+
 }

@@ -30,10 +30,9 @@ public class BookService {
    }
 
    //get books by author name
-    public Book getBooksById(String id){
+    public List<Book> getBooksByAuthorId(String authorId){
 
-
-        return bookRepository.findBookById(id);
+        return bookRepository.findBookByAuthorId(authorId);
     }
  //create book
    public Book createBook(Book book){

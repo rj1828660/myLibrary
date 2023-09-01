@@ -48,11 +48,12 @@ public class Controller {
         return ResponseEntity.ok(books);
     }
     @GetMapping("/books/byAuthorName")
-    public ResponseEntity<Book> getBooksByAuthorName(
-            @RequestParam String authorName) {
-        Author author=authorService.findAuthorByName(authorName);
+    public ResponseEntity<List<Book>> getBooksByAuthorName(
+            @RequestParam String name) {
+        Author author=authorService.findAuthorByName(name);
+
         String id= author.getId();
-          Book book= bookService.getBooksById(id);
+          List<Book> book= bookService.getBooksByAuthorId(id);
 
         return ResponseEntity.ok(book);
     }

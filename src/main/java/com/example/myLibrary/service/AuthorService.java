@@ -14,8 +14,8 @@ public class AuthorService {
 
     @Autowired
     public AuthorRepository authorRepository;
-    public Author findAuthorByName(String author){
-        return authorRepository.findByName(author);
+    public Author findAuthorByName(String name){
+        return authorRepository.findByName(name);
 
     }
     public List<Author> getAllAuthors(){
